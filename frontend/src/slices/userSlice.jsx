@@ -1,5 +1,5 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import userService from '../services/userService';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import userService from "../services/userService";
 
 const initialState = {
   user: {},
@@ -9,21 +9,23 @@ const initialState = {
   message: null,
 };
 
-// Get user details
+// Get user details, for edit data
 export const profile = createAsyncThunk(
-  'user/profile',
+  "user/profile",
   async (user, thunkAPI) => {
     const token = thunkAPI.getState().auth.user.token;
 
     const data = await userService.profile(user, token);
+
     console.log(data);
+
     return data;
-  },
+  }
 );
 
 // Update user details
 export const updateProfile = createAsyncThunk(
-  'user/update',
+  "user/update",
   async (user, thunkAPI) => {
     const token = thunkAPI.getState().auth.user.token;
 
@@ -33,22 +35,29 @@ export const updateProfile = createAsyncThunk(
     if (data.errors) {
       return thunkAPI.rejectWithValue(data.errors[0]);
     }
+
+    console.log(data);
+
     return data;
-  },
+  }
 );
 
 // Get user details
 export const getUserDetails = createAsyncThunk(
-  'user/get',
+  "user/get",
   async (id, thunkAPI) => {
+    const token = thunkAPI.getState().auth.user.token;
+
     const data = await userService.getUserDetails(id, token);
 
+    console.log(data);
+
     return data;
-  },
+  }
 );
 
 export const userSlice = createSlice({
-  name: 'user',
+  name: "user",
   initialState,
   reducers: {
     resetMessage: (state) => {
@@ -76,12 +85,12 @@ export const userSlice = createSlice({
         state.success = true;
         state.error = null;
         state.user = action.payload;
-        state.message = 'Usuário atualizado com sucesso!';
+        state.message = "Usuário atualizado com sucesso!";
       })
       .addCase(updateProfile.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
-        state.user = {};
+        state.user = null;
       })
       .addCase(getUserDetails.pending, (state) => {
         state.loading = true;
