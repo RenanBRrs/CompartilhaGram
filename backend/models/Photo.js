@@ -7,8 +7,7 @@ const photoSchema = new Schema(
     title: String,
     likes: Array,
     comments: Array,
-    // Ver aqui se der erro.
-    userId: mongoose.Types.ObjectId,
+    userId: mongoose.ObjectId,
     userName: String,
   },
   {

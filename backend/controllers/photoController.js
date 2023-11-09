@@ -1,5 +1,5 @@
-const Photo = require('../models/Photo.jsx');
-const User = require('../models/User.jsx');
+const Photo = require('../models/Photo.js');
+const User = require('../models/User.js');
 
 const mongoose = require('mongoose');
 
@@ -18,7 +18,7 @@ const insertPhoto = async (req, res) => {
     image,
     title,
     userId: user._id,
-    UserName: user.name,
+    userName: user.name,
   });
 
   //   If photo was created successfully, return data
@@ -149,7 +149,7 @@ const likePhoto = async (req, res) => {
 };
 
 // Comment functionality
-const commnetPhoto = async (req, res) => {
+const commentPhoto = async (req, res) => {
   const { id } = req.params;
   const { comment } = req.body;
 
@@ -200,6 +200,6 @@ module.exports = {
   getPhotoById,
   updatePhoto,
   likePhoto,
-  commnetPhoto,
+  commentPhoto,
   searchPhotos,
 };

@@ -9,17 +9,17 @@ const {
   login,
   update,
   getUserById,
-} = require('../controllers/userController.jsx');
+} = require('../controllers/UserController.js');
 
 // Middlewares
-const validate = require('../middlewares/handleValidation.jsx');
+const validate = require('../middlewares/handleValidations.js');
 const {
   userCreateValidation,
   loginValidation,
   userUpdateValidation,
-} = require('../middlewares/userValidations.jsx');
-const authGuard = require('../middlewares/authGuard.jsx');
-const { imageUpload } = require('../middlewares/imageUpload.jsx');
+} = require('../middlewares/userValidations.js');
+const authGuard = require('../middlewares/authGuard.js');
+const { imageUpload } = require('../middlewares/imageUpload.js');
 
 // Routes
 router.post('/register', userCreateValidation(), validate, register);

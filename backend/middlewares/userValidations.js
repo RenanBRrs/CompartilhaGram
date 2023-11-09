@@ -1,4 +1,4 @@
-const { body } = require('express-validator');
+const { body } = require("express-validator");
 
 const userCreateValidation = () => {
   return [
@@ -47,7 +47,7 @@ const userUpdateValidation = () => {
       .withMessage('The name must be at least three characters long'),
     body('password')
       .optional()
-      .isLength({ min: 6 })
+      .isLength({ min: 5 })
       .withMessage('The password must be at least 6 characters long'),
   ];
 };

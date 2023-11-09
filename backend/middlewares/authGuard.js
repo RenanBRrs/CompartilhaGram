@@ -1,4 +1,4 @@
-const User = require('../models/User.jsx');
+const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 
 const jwtSecret = process.env.JWT_PASS;

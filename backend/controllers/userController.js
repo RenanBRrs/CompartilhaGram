@@ -1,4 +1,4 @@
-const User = require('../models/User.jsx');
+const User = require('../models/User');
 
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -59,7 +59,7 @@ const login = async (req, res) => {
 
   // Check if password matches
   if (!(await bcrypt.compare(password, user.password))) {
-    res.status(422).json({ errors: ['senha invalida'] });
+    res.status(422).json({ errors: ['Invalid password!!!'] });
     return;
   }
 

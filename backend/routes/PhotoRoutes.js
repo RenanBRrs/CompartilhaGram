@@ -11,22 +11,22 @@ const {
   getPhotoById,
   updatePhoto,
   likePhoto,
-  commnetPhoto,
+  commentPhoto,
   searchPhotos,
-} = require('../controllers/photoController.jsx');
+} = require('../controllers/PhotoController.js');
 
 // Middlewares
 const {
   photoInsertValidation,
   photoUpdateValidation,
   commentValidation,
-} = require('../middlewares/photoValidation.jsx');
+} = require('../middlewares/photoValidation.js');
 
-const authGuard = require('../middlewares/authGuard.jsx');
+const authGuard = require('../middlewares/authGuard.js');
 
-const validate = require('../middlewares/handleValidation.jsx');
+const validate = require('../middlewares/handleValidations.js');
 
-const { imageUpload } = require('../middlewares/imageUpload.jsx');
+const { imageUpload } = require('../middlewares/imageUpload.js');
 
 // Routes
 router.post(
@@ -35,7 +35,7 @@ router.post(
   imageUpload.single('image'),
   photoInsertValidation(),
   validate,
-  insertPhoto,
+  insertPhoto
 );
 
 router.delete('/:id', authGuard, deletePhoto);
@@ -57,7 +57,7 @@ router.put(
   authGuard,
   commentValidation(),
   validate,
-  commnetPhoto,
+  commentPhoto
 );
 
 module.exports = router;

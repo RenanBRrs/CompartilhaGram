@@ -13,16 +13,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Solve Cors
-app.use(cors({ credentials: true, origin: 'http://127.0.0.1:5173/' }));
+app.use(cors({ credentials: true, origin: 'http://127.0.0.1:5173' }));
 
 // Upload directory
-app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // DB Connection
-require('./config/db.jsx');
+require('./config/db.js');
 
 // Routes
-const router = require('./routes/Router.jsx');
+const router = require('./routes/Router.js');
 
 app.use(router);
 
