@@ -1,0 +1,9 @@
+#footer {
+  background-color: #121212;
+  background: linear-gradient(to right, #1d1c1c, #000);
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #363636;
+}
